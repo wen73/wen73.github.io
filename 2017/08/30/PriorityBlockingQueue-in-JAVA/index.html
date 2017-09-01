@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="JAVASE," />
 
 
 
@@ -94,16 +94,18 @@
 
 
 
-<meta name="description" content="心得分享">
-<meta property="og:type" content="website">
-<meta property="og:title" content="阿文的杂货店">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="线程安全的优先级队列 PriorityBlockingQueue在最近的项目当中需要用到优先级队列且是线程安全的，无意中在java.util.concurrent中找到了一个线程安全且带优先级的PriorityBlockingQueue类。下面就介绍该类的使用。满足优先级，则需要对元素进行比较，比较出大小值。 实现比较功能外置Comparator比较器12345public interface C">
+<meta name="keywords" content="JAVASE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PriorityBlockingQueue in JAVA">
+<meta property="og:url" content="http://yoursite.com/2017/08/30/PriorityBlockingQueue-in-JAVA/index.html">
 <meta property="og:site_name" content="阿文的杂货店">
-<meta property="og:description" content="心得分享">
+<meta property="og:description" content="线程安全的优先级队列 PriorityBlockingQueue在最近的项目当中需要用到优先级队列且是线程安全的，无意中在java.util.concurrent中找到了一个线程安全且带优先级的PriorityBlockingQueue类。下面就介绍该类的使用。满足优先级，则需要对元素进行比较，比较出大小值。 实现比较功能外置Comparator比较器12345public interface C">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-31T15:43:34.725Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿文的杂货店">
-<meta name="twitter:description" content="心得分享">
+<meta name="twitter:title" content="PriorityBlockingQueue in JAVA">
+<meta name="twitter:description" content="线程安全的优先级队列 PriorityBlockingQueue在最近的项目当中需要用到优先级队列且是线程安全的，无意中在java.util.concurrent中找到了一个线程安全且带优先级的PriorityBlockingQueue类。下面就介绍该类的使用。满足优先级，则需要对元素进行比较，比较出大小值。 实现比较功能外置Comparator比较器12345public interface C">
 
 
 
@@ -133,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/30/PriorityBlockingQueue-in-JAVA/"/>
 
 
 
 
 
-  <title>阿文的杂货店</title>
+  <title>PriorityBlockingQueue in JAVA | 阿文的杂货店</title>
   
 
 
@@ -158,9 +160,7 @@
     
   
 
-  <div class="container sidebar-position-right 
-   page-home 
- ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -253,9 +253,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -285,9 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/30/PriorityBlockingQueue-in-JAVA/" itemprop="url">PriorityBlockingQueue in JAVA</a></h1>
+          <h1 class="post-title" itemprop="name headline">PriorityBlockingQueue in JAVA</h1>
         
 
         <div class="post-meta">
@@ -359,9 +357,7 @@
       
 
       
-        
-          
-            <h1 id="线程安全的优先级队列-PriorityBlockingQueue"><a href="#线程安全的优先级队列-PriorityBlockingQueue" class="headerlink" title="线程安全的优先级队列 PriorityBlockingQueue"></a>线程安全的优先级队列 PriorityBlockingQueue</h1><p>在最近的项目当中需要用到优先级队列且是线程安全的，无意中在java.util.concurrent中找到了一个线程安全且带优先级的PriorityBlockingQueue类。下面就介绍该类的使用。<br>满足优先级，则需要对元素进行比较，比较出大小值。</p>
+        <h1 id="线程安全的优先级队列-PriorityBlockingQueue"><a href="#线程安全的优先级队列-PriorityBlockingQueue" class="headerlink" title="线程安全的优先级队列 PriorityBlockingQueue"></a>线程安全的优先级队列 PriorityBlockingQueue</h1><p>在最近的项目当中需要用到优先级队列且是线程安全的，无意中在java.util.concurrent中找到了一个线程安全且带优先级的PriorityBlockingQueue类。下面就介绍该类的使用。<br>满足优先级，则需要对元素进行比较，比较出大小值。</p>
 <h2 id="实现比较功能"><a href="#实现比较功能" class="headerlink" title="实现比较功能"></a>实现比较功能</h2><h3 id="外置Comparator比较器"><a href="#外置Comparator比较器" class="headerlink" title="外置Comparator比较器"></a>外置Comparator比较器</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(T o1, T o2)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>;</div><div class="line">	...</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
 <p>要实现这个方法，比如比较Integer的大小是这样操作的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">final</span> Queue&lt;Integer&gt; priorityQueue = <span class="keyword">new</span> PriorityBlockingQueue&lt;&gt;(<span class="number">10</span>, <span class="keyword">new</span> Comparator&lt;Integer&gt;() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> o1-o2;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="比较对象实现"><a href="#比较对象实现" class="headerlink" title="比较对象实现"></a>比较对象实现</h3><p>这就需要对象实现Comparable方法了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(T o)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -372,8 +368,6 @@
 <p>这个涉及到CAS的知识，暂时先放一边，就是知道这个是用来扩增数组的就行了。<br>好的，言归正传，这个把数据插入队列是怎么操作的呢？这里我们只考虑外置的Comparator对象实现的比较（代码基本一样），<br>可以知道是siftUpUsingComparator这个方法实现的维护最小堆的结构。<br>siftUpUsingComparator：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">siftUpUsingComparator</span><span class="params">(<span class="keyword">int</span> k, T x, Object[] array,</span></span></div><div class="line"><span class="function"><span class="params">                                       Comparator&lt;? <span class="keyword">super</span> T&gt; cmp)</span> </span>&#123;</div><div class="line">        <span class="keyword">while</span> (k &gt; <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">int</span> parent = (k - <span class="number">1</span>) &gt;&gt;&gt; <span class="number">1</span>;</div><div class="line">            Object e = array[parent];</div><div class="line">            <span class="keyword">if</span> (cmp.compare(x, (T) e) &gt;= <span class="number">0</span>)</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            array[k] = e;</div><div class="line">            k = parent;</div><div class="line">        &#125;</div><div class="line">        array[k] = x;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
 <p>思路是这样子的：默认假设现在插入的数据在数组的末尾，按照小堆的构造，父节点是要小于其子节点的，parent是父节点，如果父节点还是小于子节点，则直接结束，数据插入末尾，如果字节点小于父节点，则将父节点接替字节点的位置，k变成了parent,继续遍历，知道满足条件或者k&lt;=0，结束循环，array[k] =x。</p>
 <h3 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h3>
-          
-        
       
     </div>
     
@@ -388,289 +382,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/28/从异步方法到JavaScript运行机制再到SpringBoot的-Async/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="懦夫克星">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿文的杂货店">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/28/从异步方法到JavaScript运行机制再到SpringBoot的-Async/" itemprop="url">从异步方法到JavaScript运行机制再到SpringBoot的@Async</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-28T21:58:20+08:00">
-                2017-08-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/JAVASE/" rel="tag"># JAVASE</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在看了SpringBoot上面可以调用异步方法后，觉得很是神奇，故想从头缕缕到底什么是异步方法，于是有了这篇文章，本人非计算机出身，如有错误，请指正，谢谢。</p>
-<h1 id="从异步IO说起"><a href="#从异步IO说起" class="headerlink" title="从异步IO说起"></a>从异步IO说起</h1><p>说起异步IO，相信大家都不陌生，我是通过<a href="https://scoecomp.files.wordpress.com/2014/02/2003-unix-network-programming-vol-1-3rd-ed.pdf" target="_blank" rel="external">2003-unix-network-programming</a>这本书了解的。下面讲讲异步IO到底是怎么回事。</p>
-<h2 id="同步IO"><a href="#同步IO" class="headerlink" title="同步IO"></a>同步IO</h2><p>首先讲讲同步IO,我理解的同步就是说消息的获取是要通过用户进程主动获取到的，不管在这途中用户进程是否处于阻塞状态（其实Blocking I/O、NonBlocking I/O,I/O multiplexing都是处于同步I/O）。下图为I/O multiplexing的工作流程图。<br><img src="IO_muti.jpg" alt="I/O multiplexing"><br>由图中可以知道，该复用型I/O是阻塞的，在调用select和recefrom系统调用函数时候用户进程挂起，这是同步的I/O.</p>
-<h2 id="异步IO"><a href="#异步IO" class="headerlink" title="异步IO"></a>异步IO</h2><p>而Async I/O则是非阻塞，且信息的获取是通过内核传送告知的，用户程序使用handler程序进行处理。<br><img src="aio.jpg" alt="I/O multiplexing"><br>通过对异步I/O的特性推广到异步方法，可知异步方法其实是说进程调用异步方法的时候不会阻塞用户进程，或者说这个调用方法直接return，但是此时并没有结果。这样用户进程可以执行其他的代码，当异步方法调用完毕后可以通过内核通知或者通过回调函数进行处理。</p>
-<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><p>在学习前端知识的时候，对JavaScript的运行机制并没有做深入的理解，随着在编写前端JS代码的时候发现明明调用了方法请求并有对结果进行处理，但是为什么拿到的结果却是为空？后面才知道其实JS的webAPI函数很多是异步调用，不能够直接通过看代码表面顺序来猜想程序的执行顺序。那么JS在执行代码的时候是一个什么机制呢？<br>大家都知道JavaScript是单线程执行的，在一个时间只能够执行固定的代码，那是如何实现异步调用的呢？准确的说JavaScript的执行引擎是单线程的，也就是说执行JavaScript代码的线程只有一个，但是在异步调用时实际上存在其他的工作线程。例如：处理AJAX请求的线程、处理DOM事件的线程、定时器线程、读写文件的线程等等。也就是说JavaScript实现异步调用是要操作系统线程资源的支持，并不是通过单单一个线程来处理的。<br>在执行JavaScript代码的时候，执行引擎是先执行同步代码，把栈给清空后才会执行异步方法，一般异步方法的执行通过是一个回调函数和所携带的参数组成。也就是说执行引擎在调用异步方法的时候直接返回并往下执行同步代码，与此同时异步方法的真正执行是通过工作线程来完成，当异步方法执行完后，携带的结果和回调函数组成一个消息并传入消息队列中去，等JS引擎执行完同步代码的时候通过事件循环开始从消息队列中取回调函数并执行。其工作流程如下：<br><img src="js_excute.png" alt="I/O multiplexing"><br>事件循环执行消息队列的回调函数要满足两个条件：首先栈需要时清空状态，还有就是消息队列中有消息在等待。<br>也就是说JavaScript的异步方法调用是通过回调函数触发的，当然中间会涉及到消息队列。</p>
-<h1 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h1><p>spring提供了两种调度机制：一种是定时任务@Schedule，另外一种是异步方法调用，一般使用注解@Async来做配置。有时候我们会调用一些特殊的任务，任务会比较耗时，这时候我们就需要用这类的异步任务啦，调用后就让他去跑，不堵塞主线程，我们继续干别的。<br>还有就是异步调用的时候可以返回一个结果，使用Future接口接受数据，可以通过主线程不断的轮询Future来获取异步调用的返回值，也可以使用ListenableFuture类来接受返回值，还可以配置回调函数来处理结果。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/22/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="懦夫克星">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿文的杂货店">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/22/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-22T20:27:37+08:00">
-                2017-08-22
-              </time>
+              <a href="/2017/08/28/从异步方法到JavaScript运行机制再到SpringBoot的-Async/" rel="next" title="从异步方法到JavaScript运行机制再到SpringBoot的@Async">
+                <i class="fa fa-chevron-left"></i> 从异步方法到JavaScript运行机制再到SpringBoot的@Async
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -680,10 +421,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -691,6 +433,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -711,8 +457,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -776,6 +531,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程安全的优先级队列-PriorityBlockingQueue"><span class="nav-number">1.</span> <span class="nav-text">线程安全的优先级队列 PriorityBlockingQueue</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现比较功能"><span class="nav-number">1.1.</span> <span class="nav-text">实现比较功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外置Comparator比较器"><span class="nav-number">1.1.1.</span> <span class="nav-text">外置Comparator比较器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较对象实现"><span class="nav-number">1.1.2.</span> <span class="nav-text">比较对象实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先级实现"><span class="nav-number">1.2.</span> <span class="nav-text">优先级实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#offer"><span class="nav-number">1.2.1.</span> <span class="nav-text">offer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#poll"><span class="nav-number">1.2.2.</span> <span class="nav-text">poll</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -892,10 +663,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
